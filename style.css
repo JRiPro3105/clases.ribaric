@@ -1,0 +1,239 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Josefin Slab', serif;
+    overflow: hidden;
+    cursor: url('normal.cur'), auto;
+}
+
+a, button {
+    cursor: url('pointer.cur'), pointer;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+.left-section {
+    flex: 1;
+    background-color: #FFE570;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title-box {
+    max-width: 80%;
+}
+
+.main-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-weight: 100;
+    font-size: 111px;
+    color: #296B73;
+    text-align: left;
+    line-height: 1;
+    margin: 20px 0;
+}
+
+.subtitle {
+    font-size: 30px;
+    font-weight: bold;
+    color: #296B73;
+    margin-bottom: 20px;
+}
+
+.right-section {
+    flex: 1;
+    background: white;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    overflow: hidden; /* Add this */
+}
+
+.contact-info {
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+    font-size: 30px;
+    font-weight: bold;
+    color: #296B73;
+    text-decoration: none;
+}
+
+.icon {
+    width: 40px;
+    height: 40px;
+    margin-right: 15px;
+    transition: all 0.3s ease;
+}
+
+.text-section {
+    font-family: 'Josefin Slab', serif;
+    font-size: 20px;
+    color: #296B73;
+    line-height: 1.6;
+    position: relative;
+    z-index: 1;
+    margin-top: 30px;
+}
+
+.content-wrapper {
+    position: relative;
+    z-index: 1;
+    max-width: 75%;
+    padding-right: 5%; /* Creates spacing between content and image */
+    padding: 40px 0;
+}
+
+.background-image {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 25%;
+    height: 100%;
+    background-image: url('b3.jpg');
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Animation Classes */
+.left-section .title-box {
+    opacity: 0;
+    animation: slideInLeft 1s ease-out forwards;
+    animation-delay: 0.3s;
+}
+
+.right-section .content-wrapper {
+    opacity: 0;
+    animation: slideInRight 1s ease-out forwards;
+    animation-delay: 0.6s;
+}
+
+.background-image {
+    opacity: 0;
+    animation: fadeIn 1s ease-out forwards;
+    animation-delay: 0.9s;
+}
+
+.contact-item {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Stagger animations for contact items */
+.contact-item:nth-child(1) { animation-delay: 1.2s; }
+.contact-item:nth-child(2) { animation-delay: 1.4s; }
+.contact-item:nth-child(3) { animation-delay: 1.6s; }
+
+.text-section {
+    opacity: 0;
+    animation: fadeIn 0.5s ease-out forwards;
+    animation-delay: 1.8s;
+}
+
+.main-title span {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+.main-title span:nth-child(1) { animation-delay: 0.4s; }
+.main-title span:nth-child(2) { animation-delay: 0.6s; }
+
+.subtitle {
+    opacity: 0;
+    animation: fadeIn 0.5s ease-out forwards;
+    animation-delay: 0.2s;
+}
+
+/* PRUEBA */ 
+
+.contact-item:hover {
+    transform: translateX(10px);
+    transition: transform 0.3s ease;
+}
+
+.contact-item:hover .icon {
+    filter: brightness(1.2);
+    transform: scale(1.1);
+}
+
+@media print {
+    .left-section {
+        display: none;
+    }
+    
+    .right-section {
+        width: 100%!important;
+    }
+}
+
+.content-wrapper::before,
+.content-wrapper::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: #296B73;
+    animation: fadeIn 0.5s ease-out forwards;
+    animation-delay: 1s;
+    transition: all 0.3s ease;
+}
+
+.content-wrapper::before {
+    top: -0px;
+    box-shadow: 0 2px 5px rgba(41, 107, 115, 0.2);
+    margin-top: 45px; /* Fine-tune positioning */
+}
+
+.content-wrapper::after {
+    bottom: 0;
+    box-shadow: 0 -2px 5px rgba(41, 107, 115, 0.2);
+}
+
